@@ -68,8 +68,9 @@ def get_article_detail(link):
 
 def crawl_cnbc_keyword():
     global total_documents
-    # Endpoint pencarian CNBC untuk Environmental Sustainability
-    base_url = 'https://www.cnbcindonesia.com/search?query=environmental+sustainability'
+    # Menggunakan endpoint TAG spesifik (ESG/Sustainability) sebagai pengganti
+    # halaman search yang tidak bisa diakses langsung via requests karena di-render JS.
+    base_url = 'https://www.cnbcindonesia.com/tag/sustainability'
     max_page = 2
 
     # Menulis log kapan script dijalankan (Berguna untuk melihat apakah Cronjob bekerja)
@@ -85,23 +86,16 @@ def crawl_cnbc_keyword():
         print(f'📄 Halaman {page}')
 
         try:
-            res = session.get(url, headers=headers)
+            # Format paginasi CNBC Tag (jika halaman 1 tanpa angka, selanjutnya ada angkanya)
+            url_target = f'{base_url}/{page}' if page > 1 else base_url
+            res = session.get(url_target, headers=headers)
             soup = BeautifulSoup(res.text, 'html.parser')
 
             # Deteksi artikel
             articles = soup.find_all('article')
             if not articles:
-                # Jika halaman search dirender menggunakan JS oleh CNBC,
-                # Kita akan fallback mencoba membaca halaman indeks terbaru jika tidak ditemukan artikel
-                if page == 1:
-                    print("⚠️ Artikel tidak ditemukan menggunakan format search, mencoba membaca dari halaman indeks terbaru...")
-                    res = session.get("https://www.cnbcindonesia.com/indeks", headers=headers)
-                    soup = BeautifulSoup(res.text, 'html.parser')
-                    articles = soup.find_all('article')
-                    
-                if not articles:
-                    print('⚠️  Tidak ada artikel untuk di-scrape di halaman ini, berhentikan pencarian.')
-                    break
+                print('⚠️ Tidak ada artikel untuk di-scrape di halaman ini, berhentikan pencarian.')
+                break
 
             tasks = []
             results = []
