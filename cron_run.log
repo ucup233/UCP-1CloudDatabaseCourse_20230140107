@@ -1,0 +1,24 @@
+/Users/yusuf/Downloads/UCP/venv_cron/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+✅ Connected to MongoDB Atlas successfully!
+
+==============================================
+🕒 Memulai crawling pada: 2026-04-20 10:17:01.794200
+==============================================
+
+📄 Halaman 1
+⚠️ Artikel tidak ditemukan menggunakan format search, mencoba membaca dari halaman indeks terbaru...
+✅ Download 86 Juta Lagu dari Spo... (1/10)
+✅ Video: Gugur di Fase Grup, Tim... (2/10)
+✅ Mari Tepuk Tangan! Rupiah Meng... (3/10)
+✅ Korut Pemanasan Perang, Kim Jo... (4/10)
+✅ Video: Menteri Ara Tegaskan La... (5/10)
+✅ Pajak Mobil-Motor Listrik Tak ... (6/10)
+✅ Aturan Baru! Pajak Mobil & Mot... (7/10)
+✅ Video: Pertamina Naikkan Harga... (8/10)
+✅ Harga Melesat 123%, BEI Pantau... (9/10)
+✅ Cara Matikan Fitur YouTube yan... (10/10)
+📝 Menulis 10 dokumen ke MongoDB...
+✅ Sukses insert 10 dokumen
+
+✅ Mencapai limit maksimum: 10 Documents
