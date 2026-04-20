@@ -41,8 +41,8 @@ def get_article_detail(link):
         author = author['content'] if author else None
         tags = tags['content'] if tags else None
 
-        # Class body berita CNBC biasanya 'detail_text'
-        body = soup.find('div', class_='detail_text')
+        # Class body berita CNBC biasanya 'detail-text'
+        body = soup.find('div', class_='detail-text')
         isi_berita = ''
 
         if body:
